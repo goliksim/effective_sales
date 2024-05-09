@@ -1,7 +1,7 @@
 import 'package:effective_sales/app/injectable_init.dart';
 import 'package:effective_sales/app/router_config.dart';
 import 'package:effective_sales/app/theme/effective_sales_icons.dart';
-import 'package:effective_sales/main_features/air_tickets/flight_page/bloc/flight_page_bloc.dart';
+import 'package:effective_sales/main_features/flight_tickets/flight_page/bloc/flight_page_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
