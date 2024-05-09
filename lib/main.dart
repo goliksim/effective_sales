@@ -1,23 +1,36 @@
+import 'dart:async';
+import 'package:effective_sales/app/injectable_init.dart';
+import 'package:effective_sales/app/localization/app_localizations.dart';
+import 'package:effective_sales/app/logger.dart';
+import 'package:effective_sales/app/router_config.dart';
+import 'package:effective_sales/app/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runZonedGuarded(() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    await configureDependencies();
+    logger.log('Starting app in main.dart');
+    runApp(const EffectiveSaleApp());
+  }, (error, stack) {
+    logger.warning(error.toString());
+  });
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class EffectiveSaleApp extends StatelessWidget {
+  const EffectiveSaleApp({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    return MaterialApp.router(
+      routerConfig: routerConfig,
+      theme: MyTheme.dark(),
+      darkTheme: MyTheme.dark(),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: const [
+        Locale('ru', 'RU'),
+      ],
     );
   }
 }

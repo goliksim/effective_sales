@@ -1,6 +1,13 @@
 include: package:flutter_lints/flutter.yaml
 
 linter:
-  
   rules:
-    
+    prefer_single_quotes: true
+    require_trailing_commas: true
+    always_declare_return_types: true
+  
+
+analyzer:
+  errors:
+    invalid_annotation_target: ignore
+  exclude: [lib/**.freezed.dart, lib/**.g.dart,'firebase_remote_config.dart', 'lib/app/localization/']
