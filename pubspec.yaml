@@ -48,3 +48,12 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   generate: true
+
+  assets:
+    - assets/
+    - assets/fonts/
+
+  fonts:
+    - family: EffectiveSalesIcons # the name of your font family
+      fonts:
+        - asset: assets/fonts/EffectiveSalesIcons.ttf # your font file name and the directory
