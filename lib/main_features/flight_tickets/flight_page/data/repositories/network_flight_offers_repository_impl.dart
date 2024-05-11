@@ -15,8 +15,10 @@ class NetworkFlightOffersRepositoryImpl implements NetworkFlightOffersRepository
   final FlightOfferDtoToEntityMapper flightOfferDtoToEntityMapper;
 
   @override
-  Future<List<FlightOfferEntity>> fetchOffers() {
-    return client.fetchFlightOffers();
+  Future<List<FlightOfferEntity>> fetchOffers() async {
+    final responce = await client.fetchFlightOffers(const String.fromEnvironment('OFFERS_API_LINK'));
+    final list = flightOfferDtoToEntityMapper.mapList(responce.offers ?? []);
+    return list;
   }
 
   @override

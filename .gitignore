@@ -48,3 +48,5 @@ app.*.map.json
 pubspec.lock
 lib/app/localization/app_localizations_ru.dart
 lib/app/localization/app_localizations.dart
+
+#Enviroment
