@@ -16,42 +16,49 @@ class MyStyles extends ThemeExtension<MyStyles> {
     required this.tabtext,
   });
 
-  static MyStyles figma() => MyStyles(
+  static MyStyles figma({bool isDark = false}) => MyStyles(
         title1: createStyle(
           fontSize: 22,
           figmaHeight: 26.4,
           fontWeight: FontWeight.w600,
+          color: Color(isDark ? 0xFFFFFFFF : 0xFF0C0C0C),
         ),
         title2: createStyle(
           fontSize: 20,
           figmaHeight: 24,
           fontWeight: FontWeight.w600,
+          color: Color(isDark ? 0xFFFFFFFF : 0xFF0C0C0C),
         ),
         title3: createStyle(
           fontSize: 16,
           figmaHeight: 19.2,
           fontWeight: FontWeight.w600,
+          color: Color(isDark ? 0xFFFFFFFF : 0xFF0C0C0C),
         ),
-        title4: createStyle(fontSize: 14, figmaHeight: 16.8),
+        title4: createStyle(fontSize: 14, figmaHeight: 16.8, color: Color(isDark ? 0xFFFFFFFF : 0xFF0C0C0C)),
         text1: createStyle(
           fontSize: 16,
           figmaHeight: 19.2,
-          fontWeight: FontWeight.w400,
+          fontWeight: FontWeight.w500,
+          color: Color(isDark ? 0xFFFFFFFF : 0xFF0C0C0C),
         ),
         text2: createStyle(
           fontSize: 14,
           figmaHeight: 16.8,
           fontWeight: FontWeight.w400,
+          color: Color(isDark ? 0xFFFFFFFF : 0xFF0C0C0C),
         ),
         buttontext1: createStyle(
           fontSize: 16,
           figmaHeight: 20.8,
           fontWeight: FontWeight.w600,
+          color: Color(isDark ? 0xFFFFFFFF : 0xFF0C0C0C),
         ),
         tabtext: createStyle(
           fontSize: 10,
           figmaHeight: 11,
           fontWeight: FontWeight.w400,
+          color: Color(isDark ? 0xFFFFFFFF : 0xFF0C0C0C),
         ),
       );
 
@@ -69,10 +76,12 @@ class MyStyles extends ThemeExtension<MyStyles> {
     FontWeight? fontWeight = FontWeight.normal,
     Color? color = Colors.black,
     double? figmaHeight,
+    String? fontFamily = 'SFProDisplay',
   }) {
     final height = (figmaHeight ?? fontSize) / fontSize;
 
     return TextStyle(
+      fontFamily: fontFamily,
       fontSize: fontSize,
       fontWeight: fontWeight,
       color: color,

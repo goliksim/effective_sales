@@ -1,4 +1,3 @@
-import 'package:effective_sales/main_features/flight_tickets/common/ui/route_search_elements/route_search_inherited.dart';
 import 'package:effective_sales/main_features/flight_tickets/common/ui/route_search_wrapper.dart';
 import 'package:effective_sales/main_features/flight_tickets/flight_page/ui/flight_page_appbar.dart';
 import 'package:effective_sales/main_features/flight_tickets/flight_page/ui/flight_page_body.dart';

@@ -1,5 +1,4 @@
 import 'package:effective_sales/common/ui/app_navigation_widget.dart';
-import 'package:effective_sales/main_features/flight_tickets/common/ui/route_search_wrapper.dart';
 import 'package:effective_sales/main_features/flight_tickets/end_search/ui/end_search_page.dart';
 import 'package:effective_sales/main_features/flight_tickets/flight_page/ui/flight_page.dart';
 import 'package:effective_sales/main_features/flight_tickets/pre_search/ui/pre_search_page.dart';
