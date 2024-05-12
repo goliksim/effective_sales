@@ -6,7 +6,7 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     return Center(
+    return Center(
       child: Text(context.S.nav_title_profile),
     );
   }

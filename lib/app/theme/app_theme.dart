@@ -10,14 +10,16 @@ abstract class MyTheme {
 
   static ThemeData dark() {
     MyColors colors = MyColors.darkColors();
-    MyStyles styles = MyStyles.figma();
-    return ThemeData.dark().copyWith(
+    MyStyles styles = MyStyles.figma(isDark: true);
+    return ThemeData(
+      brightness: Brightness.dark,
+      fontFamily: 'SFProDisplay',
+    ).copyWith(
       extensions: <ThemeExtension<dynamic>>[
         colors,
         styles,
       ],
       scaffoldBackgroundColor: colors.black,
-      
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: colors.black,
         type: BottomNavigationBarType.fixed,

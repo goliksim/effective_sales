@@ -16,4 +16,8 @@ class FlightOfferDtoToEntityMapper {
       price: dto.price ?? const PriceEntity(value: 0),
     );
   }
+
+  List<FlightOfferEntity> mapList(List<FlightOfferDto> flightOfferDtos) {
+    return flightOfferDtos.map((e) => map(e)).toList();
+  }
 }

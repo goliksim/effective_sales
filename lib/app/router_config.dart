@@ -31,11 +31,14 @@ abstract class RouteName {
 final routerConfig = GoRouter(
   navigatorKey: _rootNavigatorKey,
   initialLocation: RouteName.flightTickets,
+  debugLogDiagnostics: true,
   routes: [
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
       builder: (context, state, child) {
-        return AppNavigationWrapper(child: child);
+        return AppNavigationWrapper(
+          child: child,
+        );
       },
       routes: <RouteBase>[
         GoRoute(

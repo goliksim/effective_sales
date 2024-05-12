@@ -1,4 +1,5 @@
 import 'package:effective_sales/app/injectable_init.dart';
+import 'package:effective_sales/app/logger.dart';
 import 'package:effective_sales/app/router_config.dart';
 import 'package:effective_sales/app/theme/effective_sales_icons.dart';
 import 'package:effective_sales/main_features/flight_tickets/flight_page/bloc/flight_page_bloc.dart';
@@ -24,11 +25,12 @@ class AppNavigationWrapper extends StatelessWidget {
   final Widget child;
   @override
   Widget build(BuildContext context) {
-    // write multiblocprovider with value
+    logger.log('AppNavigationWrapper');
     return MultiBlocProvider(
+      key: const ValueKey(1),
       providers: [
         BlocProvider.value(
-          value: getIt<FlightPageBloc>(),
+          value: getIt<FlightPageBloc>()..load(),
         ),
         //Another features bloc
       ],

@@ -1,13 +1,29 @@
-import 'package:effective_sales/app/localization/localization_extension.dart';
+import 'package:effective_sales/main_features/flight_tickets/common/ui/route_search_wrapper.dart';
+import 'package:effective_sales/main_features/flight_tickets/flight_page/ui/flight_page_appbar.dart';
+import 'package:effective_sales/main_features/flight_tickets/flight_page/ui/flight_page_body.dart';
 import 'package:flutter/material.dart';
 
-class FlightPage extends StatelessWidget {
+class FlightPage extends StatefulWidget {
   const FlightPage({super.key});
 
   @override
+  State<FlightPage> createState() => _FlightPageState();
+}
+
+class _FlightPageState extends State<FlightPage> {
+  @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(context.S.nav_title_flight_tickets),
+    return const RouteSearchWrapper(
+      child: Scaffold(
+        extendBody: true,
+        body: CustomScrollView(
+          physics: BouncingScrollPhysics(),
+          slivers: [
+            FlightPageAppBar(),
+            FlightPageBody(),
+          ],
+        ),
+      ),
     );
   }
 }

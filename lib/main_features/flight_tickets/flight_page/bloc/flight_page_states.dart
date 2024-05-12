@@ -5,9 +5,10 @@ class FlightPageState with _$FlightPageState {
   const factory FlightPageState.init() = _FlightInitialState;
 
   const factory FlightPageState.loaded(
-    String? lastDeparture,
     List<FlightOfferEntity> flightOffers,
   ) = _FlightLoadedState;
 
-  const factory FlightPageState.error(String? lastDeparture) = _ErrorFlightState;
+  const factory FlightPageState.empty() = _FlightEmptyState;
+
+  const factory FlightPageState.error() = _ErrorFlightState;
 }
