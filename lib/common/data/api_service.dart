@@ -12,6 +12,7 @@ abstract class RestClient {
   factory RestClient(Dio dio) = _RestClient;
 
   //TODO ПОДЧИСТИТЬ
+
   // RETROFIT НЕ ПОЗВОЛЯЕТ КОДГЕНИТЬ ИЗ DART-DEFINE, ТАК ЧТО ЗАБУДЕМ О БЕЗОПАСНОСТИ
   /*static const String flightOffersUrl =
        bool.hasEnvironment('OFFERS_API_LINK') ?  String.fromEnvironment('OFFERS_API_LINK') : 'not_found';

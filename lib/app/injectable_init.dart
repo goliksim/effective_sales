@@ -1,9 +1,13 @@
+import 'package:effective_sales/main_features/flight_tickets/common/data/repository/route_part_repository_impl_mock.dart';
+import 'package:effective_sales/main_features/flight_tickets/common/domain/repositories/route_part_repository.dart';
 import 'package:effective_sales/main_features/flight_tickets/flight_page/data/repositories/flight_departure_repository_impl.dart';
 import 'package:effective_sales/main_features/flight_tickets/flight_page/data/repositories/flight_offers_repository_impl.dart';
 import 'package:effective_sales/main_features/flight_tickets/flight_page/data/repositories/network_flight_offers_repository_impl.dart';
 import 'package:effective_sales/main_features/flight_tickets/flight_page/domain/repositories/flight_departure_repository.dart';
 import 'package:effective_sales/main_features/flight_tickets/flight_page/domain/repositories/flight_offers_repository.dart';
 import 'package:effective_sales/main_features/flight_tickets/flight_page/domain/repositories/network_flight_offers_repository.dart';
+import 'package:effective_sales/main_features/flight_tickets/pre_search/data/repositories/arrival_recommendation_repository_impl_mock.dart';
+import 'package:effective_sales/main_features/flight_tickets/pre_search/domain/repositories/arrival_recommendation_repository.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
@@ -58,6 +62,21 @@ abstract class FlightPageModule {
   @injectable
   NetworkFlightOffersRepository networkFlightOffersRepository(
     NetworkFlightOffersRepositoryImpl impl,
+  ) =>
+      impl;
+
+  @injectable
+  RoutePartRepository routePartRepository(
+    RoutePartRepositoryImplMock impl,
+  ) =>
+      impl;
+}
+
+@module
+abstract class PreSearchModule {
+  @injectable
+  ArrivalRecommendationRepository arrivalRecommendationRepository(
+    ArrivalRecommendationRepositoryImplMock impl,
   ) =>
       impl;
 }

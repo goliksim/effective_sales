@@ -19,6 +19,10 @@ abstract class MyTheme {
         colors,
         styles,
       ],
+      appBarTheme: AppBarTheme(
+        elevation: 0,
+        backgroundColor: colors.black,
+      ),
       scaffoldBackgroundColor: colors.black,
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: colors.black,

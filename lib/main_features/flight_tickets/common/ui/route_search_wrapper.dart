@@ -11,7 +11,6 @@ class RouteSearchWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return BlocBuilder<RouteSearchBloc, RouteSearchState>(
       buildWhen: (previous, current) {
         final condition = (previous.flightRoute.arrival != current.flightRoute.arrival ||

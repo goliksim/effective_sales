@@ -18,7 +18,7 @@ class FlightOffersWrapper extends StatelessWidget {
           init: (value) {
             context.flightPageBloc?.load();
             return const FlightOffersShimmer();
-          }, 
+          },
           loaded: (value) => FlightOffersWidget(
             flightOffers: value.flightOffers,
           ),
