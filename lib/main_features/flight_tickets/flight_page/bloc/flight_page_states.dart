@@ -6,6 +6,7 @@ class FlightPageState with _$FlightPageState {
 
   const factory FlightPageState.loaded(
     List<FlightOfferEntity> flightOffers,
+    List<ArrivalRecommendationEntity> arrivalRecommendations,
   ) = _FlightLoadedState;
 
   const factory FlightPageState.empty() = _FlightEmptyState;

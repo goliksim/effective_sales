@@ -11,6 +11,8 @@ class FlightOfferDtoToEntityMapper {
     }
     return FlightOfferEntity(
       id: dto.id ?? -1,
+      //TODO MOCK IMAGES
+      imageUrl: 'assets/images/mock/offers/${dto.id ?? -1}.png',
       title: dto.title ?? 'Error title',
       town: dto.town ?? 'Error town',
       price: dto.price ?? const PriceEntity(value: 0),
