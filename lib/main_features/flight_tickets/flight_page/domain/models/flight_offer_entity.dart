@@ -9,6 +9,7 @@ part 'flight_offer_entity.g.dart';
 class FlightOfferEntity with _$FlightOfferEntity {
   const factory FlightOfferEntity({
     required int id,
+    required String imageUrl,
     required String title,
     required String town,
     required PriceEntity price,

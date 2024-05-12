@@ -17,8 +17,9 @@ class FlightOfferView extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(16.0),
+            //TODO IMAGE MOCK (CHANGE TO IMAGE.NETWORK)
             child: Image.asset(
-              'assets/images/offers/${flightOffer.id}.png',
+              flightOffer.imageUrl,
             ),
           ),
           const SizedBox(

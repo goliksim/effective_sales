@@ -53,7 +53,8 @@ flutter:
   assets:
     - assets/
     - assets/fonts/
-    - assets/images/offers/
+    - assets/images/mock/offers/
+    - assets/images/mock/arrival_recommendation/
 
   fonts:
     - family: EffectiveSalesIcons 

@@ -1,26 +1,24 @@
-import 'package:effective_sales/main_features/flight_tickets/common/ui/route_search_elements/route_search_inherited.dart';
+import 'package:effective_sales/main_features/flight_tickets/common/bloc/route_search_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class RouteSearchWrapper extends StatefulWidget {
+class RouteSearchWrapper extends StatelessWidget {
   const RouteSearchWrapper({
     super.key,
-    required this.child,
+    required this.builder,
   });
-  final Widget child;
+  final Function(BuildContext, RouteSearchState) builder;
 
-  @override
-  State<RouteSearchWrapper> createState() => _RouteSearchWrapperState();
-}
-
-class _RouteSearchWrapperState extends State<RouteSearchWrapper> {
   @override
   Widget build(BuildContext context) {
-    return RouteSearchInherited(
-      child: Builder(
-        builder: (context) {
-          return widget.child;
-        },
-      ),
-    )..firstSetDeparture();
+    return BlocBuilder<RouteSearchBloc, RouteSearchState>(
+      buildWhen: (previous, current) {
+        final condition = (previous.flightRoute.arrival != current.flightRoute.arrival ||
+            previous.flightRoute.departure != current.flightRoute.departure);
+        print(condition);
+        return condition;
+      },
+      builder: (context, state) => builder(context, state),
+    );
   }
 }

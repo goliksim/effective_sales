@@ -1,6 +1,8 @@
 import 'package:effective_sales/app/logger.dart';
 import 'package:effective_sales/main_features/flight_tickets/flight_page/domain/models/flight_offer_entity.dart';
 import 'package:effective_sales/main_features/flight_tickets/flight_page/domain/repositories/flight_offers_repository.dart';
+import 'package:effective_sales/main_features/flight_tickets/pre_search/domain/models/arrival_recommendation_entity.dart';
+import 'package:effective_sales/main_features/flight_tickets/pre_search/domain/repositories/arrival_recommendation_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -17,9 +19,13 @@ extension FlightPageBuilder on BuildContext {
 
 @singleton
 class FlightPageBloc extends Bloc<FlightPageEvent, FlightPageState> {
-  final FlightOffersRepository flightOffersRepository;
+  final FlightOffersRepository flightOffersRep;
+  final ArrivalRecommendationRepository arrivalRecommendationRep;
 
-  FlightPageBloc(this.flightOffersRepository) : super(const FlightPageState.init()) {
+  FlightPageBloc(
+    this.flightOffersRep,
+    this.arrivalRecommendationRep,
+  ) : super(const FlightPageState.init()) {
     on<_LoadFlightPage>(_load);
   }
 
@@ -30,7 +36,8 @@ class FlightPageBloc extends Bloc<FlightPageEvent, FlightPageState> {
   Future<void> _load(_LoadFlightPage event, Emitter<FlightPageState> emit) async {
     try {
       logger.log('flighPageBloc load');
-      final List<FlightOfferEntity> flightOffers = await flightOffersRepository.getOfferEntities();
+      final flightOffers = await flightOffersRep.getOfferEntities();
+      final arrivalRecommendations = await arrivalRecommendationRep.getAllRecommendation();
       logger.log('flightOffers $flightOffers');
       if (flightOffers.isEmpty) {
         emit(
@@ -38,7 +45,10 @@ class FlightPageBloc extends Bloc<FlightPageEvent, FlightPageState> {
         );
       } else {
         emit(
-          FlightPageState.loaded(flightOffers),
+          FlightPageState.loaded(
+            flightOffers,
+            arrivalRecommendations,
+          ),
         );
       }
     } catch (e) {

@@ -11,5 +11,9 @@
     "price_from": "от",
     "network_error_title":"Что-то пошло не так",
     "network_error_body":"Возможно, пропал интернет, или у нас что-то сломалось. Проверьте подключение или попробуйте позже",
-    "network_error_retry":"Обновить"
+    "network_error_retry":"Обновить",
+    "f_pre_search_hints_hard_way":"Сложный маршрут",
+    "f_pre_search_hints_random":"Куда угодно",
+    "f_pre_search_hints_weekend":"Выходные",
+    "f_pre_search_hints_hot_tickets":"Горячие билеты"
 }

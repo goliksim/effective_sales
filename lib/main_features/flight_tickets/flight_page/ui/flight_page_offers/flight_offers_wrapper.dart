@@ -15,7 +15,10 @@ class FlightOffersWrapper extends StatelessWidget {
     return BlocBuilder<FlightPageBloc, FlightPageState>(
       builder: (context, state) {
         return state.map(
-          init: (value) => const FlightOffersShimmer(),
+          init: (value) {
+            context.flightPageBloc?.load();
+            return const FlightOffersShimmer();
+          },
           loaded: (value) => FlightOffersWidget(
             flightOffers: value.flightOffers,
           ),

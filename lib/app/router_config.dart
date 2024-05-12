@@ -1,5 +1,8 @@
 import 'package:effective_sales/common/ui/app_navigation_widget.dart';
 import 'package:effective_sales/main_features/flight_tickets/end_search/ui/end_search_page.dart';
+import 'package:effective_sales/main_features/flight_tickets/end_search/ui/search_hard.dart';
+import 'package:effective_sales/main_features/flight_tickets/end_search/ui/search_hot_deals.dart';
+import 'package:effective_sales/main_features/flight_tickets/end_search/ui/search_weekend.dart';
 import 'package:effective_sales/main_features/flight_tickets/flight_page/ui/flight_page.dart';
 import 'package:effective_sales/main_features/flight_tickets/pre_search/ui/pre_search_page.dart';
 import 'package:effective_sales/main_features/hotels/ui/hotels_page.dart';
@@ -17,6 +20,9 @@ abstract class RouteName {
 
   static const String flightTickets = '/flightTickets';
   static const String flightPreSearch = '/flightPreSearch';
+  static const String flightSearchHard = '/flightSearchHard';
+  static const String flightSearchWeekend = '/flightSearchWeekend';
+  static const String flightSearchHotDeal = '/flightSearchHotDeal';
   static const String flightEndSearch = '/flightEndSearch';
 
   static const String hotels = '/hotels';
@@ -71,19 +77,38 @@ final routerConfig = GoRouter(
             return const ProfilePage();
           },
         ),
+        GoRoute(
+          path: RouteName.flightSearchHard,
+          builder: (BuildContext context, GoRouterState state) {
+            return const FlightSearchHardWay();
+          },
+        ),
+        GoRoute(
+          path: RouteName.flightSearchWeekend,
+          builder: (BuildContext context, GoRouterState state) {
+            return const FlightSearchWeekend();
+          },
+        ),
+        GoRoute(
+          path: RouteName.flightSearchHotDeal,
+          builder: (BuildContext context, GoRouterState state) {
+            return const FlightSearchHotDeal();
+          },
+        ),
+        GoRoute(
+          path: RouteName.flightPreSearch,
+          builder: (BuildContext context, GoRouterState state) {
+            return const FlightPreSearchPage();
+          },
+        ),
+        GoRoute(
+          path: RouteName.flightEndSearch,
+          builder: (BuildContext context, GoRouterState state) {
+            return const FlightEndSearchPage();
+          },
+        ),
       ],
     ),
-    GoRoute(
-      path: RouteName.flightPreSearch,
-      builder: (BuildContext context, GoRouterState state) {
-        return const FlightPreSearchPage();
-      },
-    ),
-    GoRoute(
-      path: RouteName.flightEndSearch,
-      builder: (BuildContext context, GoRouterState state) {
-        return const FlightEndSearchPage();
-      },
-    ),
+    //ROUTES OUTSIDE NAVBAR
   ],
 );
