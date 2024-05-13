@@ -1,5 +1,7 @@
 import 'package:effective_sales/main_features/flight_tickets/common/data/repository/route_part_repository_impl_mock.dart';
 import 'package:effective_sales/main_features/flight_tickets/common/domain/repositories/route_part_repository.dart';
+import 'package:effective_sales/main_features/flight_tickets/end_search/data/repositories/ticket_offers_repositories_impl.dart';
+import 'package:effective_sales/main_features/flight_tickets/end_search/domain/repositories/ticket_offers_repositories.dart';
 import 'package:effective_sales/main_features/flight_tickets/flight_page/data/repositories/flight_departure_repository_impl.dart';
 import 'package:effective_sales/main_features/flight_tickets/flight_page/data/repositories/flight_offers_repository_impl.dart';
 import 'package:effective_sales/main_features/flight_tickets/flight_page/data/repositories/network_flight_offers_repository_impl.dart';
@@ -7,7 +9,7 @@ import 'package:effective_sales/main_features/flight_tickets/flight_page/domain/
 import 'package:effective_sales/main_features/flight_tickets/flight_page/domain/repositories/flight_offers_repository.dart';
 import 'package:effective_sales/main_features/flight_tickets/flight_page/domain/repositories/network_flight_offers_repository.dart';
 import 'package:effective_sales/main_features/flight_tickets/pre_search/data/repositories/arrival_recommendation_repository_impl_mock.dart';
-import 'package:effective_sales/main_features/flight_tickets/pre_search/data/repositories/flight_pre_search_repository.dart';
+import 'package:effective_sales/main_features/flight_tickets/pre_search/data/repositories/flight_pre_search_repository_impl.dart';
 import 'package:effective_sales/main_features/flight_tickets/pre_search/domain/repositories/arrival_recommendation_repository.dart';
 import 'package:effective_sales/main_features/flight_tickets/pre_search/domain/repositories/flight_pre_search_repository.dart';
 import 'package:get_it/get_it.dart';
@@ -85,6 +87,15 @@ abstract class PreSearchModule {
   @injectable
   FlightPreSearchRepository flightPreSearchRepository(
     FlightPreSearchRepositoryImpl impl,
+  ) =>
+      impl;
+}
+
+@module
+abstract class SearchModule {
+  @injectable
+  TicketOffersRepository flightPreSearchRepository(
+    TicketOffersRepositoryImpl impl,
   ) =>
       impl;
 }
