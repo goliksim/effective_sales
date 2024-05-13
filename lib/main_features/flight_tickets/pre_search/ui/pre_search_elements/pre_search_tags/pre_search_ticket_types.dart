@@ -36,7 +36,7 @@ class FlightPreSearchTypesTag extends StatelessWidget {
     return '${ticketsCount ?? 1}, $typeString';
   }
 
-  //MOCK TYPES GENERATOR
+  //TODO MOCK TYPES GENERATOR
   void _pickTicketTypes() {
     var (count, type) = _generateRandomTicketsType();
 

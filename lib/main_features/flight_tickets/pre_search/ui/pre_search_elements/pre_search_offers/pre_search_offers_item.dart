@@ -12,7 +12,7 @@ class FlightTicketOfferItem extends StatelessWidget {
   });
   final FlightTicketOffersEntity flightTicketOffer;
 
-  //MOCK COLOR GENERATOR
+  //TODO MOCK COLOR GENERATOR
   Color _getColorById(int id, BuildContext context) {
     switch (id) {
       case 1:
