@@ -1,12 +1,16 @@
 import 'package:effective_sales/app/logger.dart';
+import 'package:effective_sales/app/router_config.dart';
 import 'package:effective_sales/main_features/flight_tickets/common/domain/models/flight_route.dart';
 import 'package:effective_sales/main_features/flight_tickets/common/domain/models/flight_ticket_type.dart';
+import 'package:effective_sales/main_features/flight_tickets/end_search/domain/models/ticket_offers_entity.dart';
+import 'package:effective_sales/main_features/flight_tickets/end_search/domain/repositories/ticket_offers_repositories.dart';
 import 'package:effective_sales/main_features/flight_tickets/pre_search/domain/models/flight_offers_request_entity.dart';
 import 'package:effective_sales/main_features/flight_tickets/pre_search/domain/models/flight_ticket_offers_entity.dart';
 import 'package:effective_sales/main_features/flight_tickets/pre_search/domain/repositories/flight_pre_search_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:go_router/go_router.dart';
 import 'package:injectable/injectable.dart';
 
 part 'flight_search_bloc.freezed.dart';
@@ -21,9 +25,10 @@ extension FlightSearchBuilder on BuildContext {
 @singleton
 class FlightSearchBloc extends Bloc<FlightSearchEvent, FlightSearchState> {
   final FlightPreSearchRepository flightPreSearchRepository;
-
+  final TicketOffersRepository ticketOffersRepository;
   FlightSearchBloc(
     this.flightPreSearchRepository,
+    this.ticketOffersRepository,
   ) : super(
           FlightSearchState.init(
             requestEntity: FlightOffersRequestEntity(
@@ -34,6 +39,7 @@ class FlightSearchBloc extends Bloc<FlightSearchEvent, FlightSearchState> {
         ) {
     on<_FlightSearchLoad>(_loadRoute);
     on<_FlightPreSearch>(_preSearch);
+    on<_FlightToSearch>(_toSearch);
     on<_FlightSearch>(_search);
     on<_FlightSearchDateChanger>(_updateDate);
     on<_FlightSearchWayChanger>(_updateReverseDate);
@@ -45,6 +51,10 @@ class FlightSearchBloc extends Bloc<FlightSearchEvent, FlightSearchState> {
 
   void preSearch() {
     add(const FlightSearchEvent.preSearch());
+  }
+
+  void toSearch(BuildContext context) {
+    add(FlightSearchEvent.toSearch(context));
   }
 
   void search() {
@@ -128,7 +138,29 @@ class FlightSearchBloc extends Bloc<FlightSearchEvent, FlightSearchState> {
     add(const FlightSearchEvent.preSearch());
   }
 
+  Future<void> _toSearch(_FlightToSearch event, Emitter<FlightSearchState> emit) async {
+    event.context.push(RouteName.flightEndSearch).then((value) {
+      preSearch();
+    });
+  }
+
   Future<void> _search(_FlightSearch event, Emitter<FlightSearchState> emit) async {
-    throw UnimplementedError();
+    logger.log('FlightSearchBloc _Search');
+    try {
+      final tickets = await ticketOffersRepository.getTicketOffers(
+        state.requestEntity,
+      );
+      logger.log('FlightSearchBloc _Search $tickets');
+
+      emit(
+        FlightSearchState.ticketsLoaded(
+          requestEntity: state.requestEntity,
+          tickets: tickets,
+        ),
+      );
+    } catch (e) {
+      logger.log('FlightSearchBloc _Search $e');
+      emit(FlightSearchState.error(requestEntity: state.requestEntity));
+    }
   }
 }

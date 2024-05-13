@@ -4,6 +4,7 @@ part of 'flight_search_bloc.dart';
 abstract class FlightSearchEvent with _$FlightSearchEvent {
   const factory FlightSearchEvent.loadRoute(FlightRoute route) = _FlightSearchLoad;
   const factory FlightSearchEvent.preSearch() = _FlightPreSearch;
+  const factory FlightSearchEvent.toSearch(BuildContext context) = _FlightToSearch;
   const factory FlightSearchEvent.search() = _FlightSearch;
 
   const factory FlightSearchEvent.updateRequestDate(DateTime date) = _FlightSearchDateChanger;
