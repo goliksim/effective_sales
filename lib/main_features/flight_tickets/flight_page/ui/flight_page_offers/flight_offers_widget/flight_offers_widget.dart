@@ -1,4 +1,5 @@
 import 'package:effective_sales/app/localization/localization_extension.dart';
+import 'package:effective_sales/app/theme/app_theme_colors.dart';
 import 'package:effective_sales/app/theme/app_theme_data.dart';
 import 'package:effective_sales/main_features/flight_tickets/flight_page/domain/models/flight_offer_entity.dart';
 import 'package:effective_sales/main_features/flight_tickets/flight_page/ui/flight_page_offers/flight_offers_widget/flight_offers_listview.dart';
@@ -32,6 +33,28 @@ class FlightOffersWidget extends StatelessWidget {
               height: 213.16,
               child: FlightOffersListView(
                 flightOffers: flightOffers,
+              ),
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: context.myColors.grey3,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16.0),
+                ),
+              ),
+              onPressed: () {},
+              child: SizedBox(
+                height: 42,
+                width: double.infinity,
+                child: Center(
+                  child: Text(
+                    context.S.f_page_offers_show_all,
+                    style: context.myStyles.buttontext1,
+                  ),
+                ),
               ),
             ),
             const SizedBox(

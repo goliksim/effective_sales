@@ -59,7 +59,7 @@ class RouteSearchCityWidget extends StatelessWidget {
             IconButton(
               splashRadius: 16,
               padding: EdgeInsets.zero,
-              onPressed: onActionIcon,
+              onPressed: () => onActionIcon?.call(),
               icon: actionIcon!,
             )
         ],
