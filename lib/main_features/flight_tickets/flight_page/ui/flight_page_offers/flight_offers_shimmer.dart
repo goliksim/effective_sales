@@ -18,7 +18,7 @@ class FlightOffersShimmer extends StatelessWidget {
             children: [
               const ShimerBox(50, 250, EdgeInsets.fromLTRB(8, 8, 8, 18)),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
+                padding: const EdgeInsets.symmetric(horizontal: 0),
                 child: SizedBox(
                   height: 213.16,
                   width: double.infinity,

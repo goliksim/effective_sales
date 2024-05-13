@@ -22,12 +22,12 @@ class AppState {
 }
 
 class AppNavigationWrapper extends StatelessWidget {
-  const AppNavigationWrapper({super.key, required this.child});
+  const AppNavigationWrapper({super.key, required this.navigationShell});
+  final StatefulNavigationShell navigationShell;
 
-  final Widget child;
   @override
   Widget build(BuildContext context) {
-    logger.log('AppNavigationWrapper key: $key');
+    logger.log('AppNavigationWrapper key: ${navigationShell.currentIndex}');
     return MultiBlocProvider(
       providers: [
         BlocProvider.value(
@@ -42,28 +42,15 @@ class AppNavigationWrapper extends StatelessWidget {
         //Another features bloc
       ],
       child: MainAppScaffold(
-        child: child,
+        navigationShell: navigationShell,
       ),
     );
   }
 }
 
-class MainAppScaffold extends StatefulWidget {
-  const MainAppScaffold({super.key, required this.child});
-
-  final Widget child;
-
-  @override
-  State<MainAppScaffold> createState() => _MainAppScaffoldState();
-}
-
-class _MainAppScaffoldState extends State<MainAppScaffold> {
-  int _selectedIndex = 0;
-
-  void _onItemTapped(int index) {
-    _selectedIndex = index;
-    context.pushReplacement(AppState.mapScreen[index] ?? '/home');
-  }
+class MainAppScaffold extends StatelessWidget {
+  const MainAppScaffold({super.key, required this.navigationShell});
+  final StatefulNavigationShell navigationShell;
 
   @override
   Widget build(BuildContext context) {
@@ -72,20 +59,24 @@ class _MainAppScaffoldState extends State<MainAppScaffold> {
       builder: (context, showBar, child) {
         return Scaffold(
           resizeToAvoidBottomInset: false,
-          body: child,
+          body: navigationShell,
           bottomNavigationBar: !showBar
               ? null
               : SizedBox(
                   height: 54,
                   child: BottomNavigationBar(
-                    currentIndex: _selectedIndex,
-                    onTap: (index) => _onItemTapped(index),
+                    currentIndex: navigationShell.currentIndex,
                     items: _createNavigationBarItems(context),
+                    onTap: (int index) {
+                      navigationShell.goBranch(
+                        index,
+                        initialLocation: index == navigationShell.currentIndex,
+                      );
+                    },
                   ),
                 ),
         );
       },
-      child: widget.child,
     );
   }
 

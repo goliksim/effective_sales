@@ -19,6 +19,8 @@ class FlightOfferView extends StatelessWidget {
             borderRadius: BorderRadius.circular(16.0),
             //TODO IMAGE MOCK (CHANGE TO IMAGE.NETWORK)
             child: Image.asset(
+              fit: BoxFit.fitHeight,
+              height: 132,
               flightOffer.imageUrl,
             ),
           ),

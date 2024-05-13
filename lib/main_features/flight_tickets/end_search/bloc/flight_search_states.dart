@@ -13,7 +13,7 @@ class FlightSearchState with _$FlightSearchState {
 
   const factory FlightSearchState.ticketsLoaded({
     required FlightOffersRequestEntity requestEntity,
-    //TODO ADD TICKETS_ENTITIES
+    required List<TicketOffersEntity> tickets,
   }) = _FlightSearchLoaded;
 
   const factory FlightSearchState.error({

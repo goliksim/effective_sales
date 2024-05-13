@@ -13,7 +13,6 @@ class FlightPage extends StatefulWidget {
 class _FlightPageState extends State<FlightPage> {
   @override
   Widget build(BuildContext context) {
-    print('routeSearchBlock');
     context.routeSearchBloc?.load();
     return const Scaffold(
       resizeToAvoidBottomInset: false,

@@ -21,7 +21,7 @@ class FlightPreSearchBody extends StatelessWidget {
           ),
           FlightPreSearchShowAll(
             onPressed: () {
-              //TODO ACTION
+              context.flightSearchBloc?.toSearch(context);
             },
           ),
           const SizedBox(

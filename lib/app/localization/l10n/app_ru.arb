@@ -26,6 +26,13 @@
     "f_pre_search_show_all":"Посмотреть все билеты",
     "f_pre_search_price_subscription":"Подписка на цену",
     "f_pre_search_offers_show_all":"Показать все",
-    "f_pre_search_offers_hide":"Свернуть"
+    "f_pre_search_offers_hide":"Свернуть",
+    "f_search_passenger":"пассажир",
+    "f_search_passengers":"пассажира",
+    "f_search_passengerss":"пассажиров",
+    "f_search_hour":"ч",
+    "f_search_in_flight":"в пути",
+    "f_search_no_transfers":"Без пересадок",
+    "f_search_with_transfers":"C пересадками"
     
 }

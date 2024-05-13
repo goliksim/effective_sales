@@ -1,3 +1,4 @@
+import 'package:effective_sales/main_features/flight_tickets/end_search/data/models/ticket_offers_responce.dart';
 import 'package:effective_sales/main_features/flight_tickets/flight_page/data/models/flight_offer_responce.dart';
 import 'package:effective_sales/main_features/flight_tickets/pre_search/data/models/flight_ticket_offers_responce.dart';
 import 'package:retrofit/retrofit.dart';
@@ -27,4 +28,7 @@ abstract class RestClient {
 
   @GET('/{url}')
   Future<FlightTicketOffersResponce> fetchTicketOffers(@Path() String url);
+
+  @GET('/{url}')
+  Future<TicketOffersResponce> fetchTickets(@Path() String url);
 }
