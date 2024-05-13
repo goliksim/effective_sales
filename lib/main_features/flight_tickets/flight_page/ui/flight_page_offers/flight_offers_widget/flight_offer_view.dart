@@ -6,7 +6,10 @@ import 'package:effective_sales/main_features/flight_tickets/flight_page/domain/
 import 'package:flutter/material.dart';
 
 class FlightOfferView extends StatelessWidget {
-  const FlightOfferView({super.key, required this.flightOffer});
+  const FlightOfferView({
+    super.key,
+    required this.flightOffer,
+  });
   final FlightOfferEntity flightOffer;
   @override
   Widget build(BuildContext context) {

@@ -2,7 +2,9 @@ import 'package:effective_sales/app/localization/localization_extension.dart';
 import 'package:flutter/material.dart';
 
 class FlightSearchHotDeal extends StatelessWidget {
-  const FlightSearchHotDeal({super.key});
+  const FlightSearchHotDeal({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

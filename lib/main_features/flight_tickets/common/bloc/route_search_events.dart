@@ -8,6 +8,8 @@ abstract class RouteSearchEvent with _$RouteSearchEvent {
 
   const factory RouteSearchEvent.confirmDepartureByString(String newDeparture) = _DepartureStringConfirm;
 
+  const factory RouteSearchEvent.pickRandomArrival(BuildContext? context) = _PickRandomArrival;
+
   const factory RouteSearchEvent.swap() = _SwapRouteSearch;
 
   const factory RouteSearchEvent.clearArrival() = _ClearArrivalRouteSearch;

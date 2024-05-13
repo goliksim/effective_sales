@@ -6,7 +6,10 @@ import 'package:effective_sales/main_features/flight_tickets/flight_page/ui/flig
 import 'package:flutter/material.dart';
 
 class FlightOffersWidget extends StatelessWidget {
-  const FlightOffersWidget({super.key, required this.flightOffers});
+  const FlightOffersWidget({
+    super.key,
+    required this.flightOffers,
+  });
   final List<FlightOfferEntity> flightOffers;
 
   @override

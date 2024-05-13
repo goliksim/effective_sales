@@ -3,7 +3,9 @@ import 'package:effective_sales/main_features/flight_tickets/end_search/bloc/fli
 import 'package:flutter/material.dart';
 
 class FlightPreSearchError extends StatelessWidget {
-  const FlightPreSearchError({super.key});
+  const FlightPreSearchError({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

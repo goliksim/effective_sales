@@ -15,6 +15,7 @@ class ArrivalRecommendationRepositoryImplMock implements ArrivalRecommendationRe
     return Future.value(_recommendation);
   }
 
+  //TODO MOCK REPOSITORY IMPL -> CREATE REAL
   static const List<ArrivalRecommendationEntity> _recommendation = [
     ArrivalRecommendationEntity(
       placeTitle: 'Стамбул',

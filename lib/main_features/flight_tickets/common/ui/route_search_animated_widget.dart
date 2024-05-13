@@ -65,7 +65,6 @@ class RouteSearchAnimatedWidget extends StatelessWidget {
                               isDeparture: true,
                               leftIcon: departureIcon,
                               actionIcon: showSwapButton ? const Icon(EffectiveSalesIcons.swap) : null,
-                              onActionIcon: () {},
                               hintText: context.S.f_page_search_departure_hint,
                             ),
                             Divider(
@@ -77,7 +76,6 @@ class RouteSearchAnimatedWidget extends StatelessWidget {
                               isDeparture: false,
                               leftIcon: arrivalIcon,
                               actionIcon: showClearArrivalButton ? const Icon(EffectiveSalesIcons.swap) : null,
-                              onActionIcon: () {},
                               hintText: context.S.f_page_search_arrival_hint,
                             ),
                           ],
@@ -94,7 +92,6 @@ class RouteSearchAnimatedWidget extends StatelessWidget {
                           isDeparture: false,
                           leftIcon: arrivalIcon,
                           actionIcon: showClearArrivalButton ? const Icon(EffectiveSalesIcons.swap) : null,
-                          onActionIcon: () {},
                           hintText: context.S.f_page_search_arrival_hint,
                         ),
                       ),

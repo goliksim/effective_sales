@@ -39,8 +39,7 @@ final routerConfig = GoRouter(
   debugLogDiagnostics: true,
   routes: [
     StatefulShellRoute.indexedStack(
-      //navigatorKey: _shellNavigatorKey,
-      builder: (context, state, navigationShell) => AppNavigationWrapper(
+      builder: (context, state, navigationShell) => MainAppScaffold(
         navigationShell: navigationShell,
       ),
       branches: <StatefulShellBranch>[
@@ -128,6 +127,5 @@ final routerConfig = GoRouter(
         )
       ],
     ),
-    //ROUTES OUTSIDE NAVBAR
   ],
 );

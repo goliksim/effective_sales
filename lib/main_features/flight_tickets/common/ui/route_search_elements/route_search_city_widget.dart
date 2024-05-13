@@ -13,7 +13,6 @@ class RouteSearchCityWidget extends StatelessWidget {
     this.actionBeforeComplete,
     required this.isDeparture,
   });
-  //TODO Придумать получше наследование
   final Function()? actionBeforeComplete;
   final String hintText;
   final Icon? leftIcon;
@@ -24,9 +23,10 @@ class RouteSearchCityWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final initialValue = isDeparture
+    final String? initialValue = isDeparture
         ? context.routeSearchState?.flightRoute.departure?.localTown
         : context.routeSearchState?.flightRoute.arrival?.localTown;
+
     return SizedBox(
       height: 24,
       child: Row(

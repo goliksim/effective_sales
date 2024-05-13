@@ -3,7 +3,10 @@ import 'package:effective_sales/main_features/flight_tickets/flight_page/ui/flig
 import 'package:flutter/material.dart';
 
 class FlightOffersListView extends StatelessWidget {
-  const FlightOffersListView({super.key, required this.flightOffers});
+  const FlightOffersListView({
+    super.key,
+    required this.flightOffers,
+  });
   final List<FlightOfferEntity> flightOffers;
 
   @override
@@ -13,7 +16,9 @@ class FlightOffersListView extends StatelessWidget {
       itemBuilder: (context, index) => FlightOfferView(
         flightOffer: flightOffers[index],
       ),
-      separatorBuilder: (context, index) => const SizedBox(width: 67),
+      separatorBuilder: (context, index) => const SizedBox(
+        width: 67,
+      ),
       itemCount: flightOffers.length,
       scrollDirection: Axis.horizontal,
     );

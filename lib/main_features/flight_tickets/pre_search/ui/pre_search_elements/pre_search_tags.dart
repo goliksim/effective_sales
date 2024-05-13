@@ -1,5 +1,4 @@
 import 'package:effective_sales/app/localization/localization_extension.dart';
-import 'package:effective_sales/app/logger.dart';
 import 'package:effective_sales/app/theme/app_theme_data.dart';
 import 'package:effective_sales/app/theme/effective_sales_icons.dart';
 import 'package:effective_sales/main_features/flight_tickets/common/domain/models/flight_ticket_type.dart';
@@ -10,12 +9,13 @@ import 'package:effective_sales/main_features/flight_tickets/pre_search/ui/pre_s
 import 'package:flutter/material.dart';
 
 class FlightPreSearchTags extends StatelessWidget {
-  const FlightPreSearchTags({super.key});
+  const FlightPreSearchTags({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     final request = context.flightSearchBloc?.state.requestEntity;
-    logger.log('build tags with $request');
     final List<Widget> tags = [
       //REVERSE
       FlightPreSearchDateTags(

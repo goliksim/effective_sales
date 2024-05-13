@@ -8,7 +8,9 @@ import 'package:effective_sales/main_features/flight_tickets/pre_search/ui/pre_s
 import 'package:flutter/material.dart';
 
 class FlightPreSearchPage extends StatelessWidget {
-  const FlightPreSearchPage({super.key});
+  const FlightPreSearchPage({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +30,11 @@ class FlightPreSearchPage extends StatelessWidget {
                     builder: (context, state) {
                       return state.maybeWhen(
                         orElse: () => const FlightPreSearchBodyShimmer(),
-                        preSearch: (_, __) => const SingleChildScrollView(
-                          physics: BouncingScrollPhysics(),
-                          child: FlightPreSearchBody(),
+                        preSearch: (_, offers) => SingleChildScrollView(
+                          physics: const BouncingScrollPhysics(),
+                          child: FlightPreSearchBody(
+                            offers: offers,
+                          ),
                         ),
                         ticketsLoaded: (_, __) {
                           return const FlightPreSearchBodyShimmer();

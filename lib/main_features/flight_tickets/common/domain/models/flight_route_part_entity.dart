@@ -10,7 +10,6 @@ class FlightRoutePartEntity with _$FlightRoutePartEntity {
     required int townId,
     required String localContry,
     required String localTown,
-    //timezone ...
   }) = _FlightRoutePartEntity;
 
   factory FlightRoutePartEntity.fromJson(Map<String, Object?> json) => _$FlightRoutePartEntityFromJson(json);

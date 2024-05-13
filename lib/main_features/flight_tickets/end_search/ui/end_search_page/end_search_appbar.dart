@@ -10,7 +10,7 @@ import 'package:intl/intl.dart';
 class FlightSearchAppBar extends StatelessWidget {
   const FlightSearchAppBar({super.key});
 
-  String formatDate(DateTime date, BuildContext context, [DateTime? reverseDate]) {
+  String _formatDate(DateTime date, BuildContext context, [DateTime? reverseDate]) {
     final locale = Localizations.localeOf(context).languageCode;
     if (reverseDate != null) {
       return '${DateFormat('d MMMM', locale).format(date)} - ${DateFormat('d MMMM', locale).format(reverseDate)}';
@@ -18,7 +18,7 @@ class FlightSearchAppBar extends StatelessWidget {
     return DateFormat('d MMMM', locale).format(date);
   }
 
-  String correctPassengerName(BuildContext context, int count) {
+  String _correctPassengerName(BuildContext context, int count) {
     if (count == 1) {
       return context.S.f_search_passenger;
     } else if (count > 4) {
@@ -42,7 +42,6 @@ class FlightSearchAppBar extends StatelessWidget {
           child: Row(
             children: [
               IconButton(
-                //padding: EdgeInsets.zero,
                 splashRadius: 20,
                 onPressed: () {
                   context.pop();
@@ -66,7 +65,7 @@ class FlightSearchAppBar extends StatelessWidget {
                     ),
                     if (requestEntity?.date != null && requestEntity?.ticketsCount != null)
                       Text(
-                        '${formatDate(requestEntity!.date, context, requestEntity.reverseDate)}, ${requestEntity.ticketsCount} ${correctPassengerName(context, requestEntity.ticketsCount)}',
+                        '${_formatDate(requestEntity!.date, context, requestEntity.reverseDate)}, ${requestEntity.ticketsCount} ${_correctPassengerName(context, requestEntity.ticketsCount)}',
                         style: context.myStyles.title4.copyWith(
                           color: context.myColors.grey6,
                         ),

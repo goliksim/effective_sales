@@ -1,5 +1,4 @@
 import 'package:effective_sales/app/injectable_init.dart';
-import 'package:effective_sales/app/logger.dart';
 import 'package:effective_sales/app/router_config.dart';
 import 'package:effective_sales/app/theme/effective_sales_icons.dart';
 import 'package:effective_sales/main_features/flight_tickets/common/bloc/route_search_bloc.dart';
@@ -22,12 +21,14 @@ class AppState {
 }
 
 class AppNavigationWrapper extends StatelessWidget {
-  const AppNavigationWrapper({super.key, required this.navigationShell});
-  final StatefulNavigationShell navigationShell;
+  const AppNavigationWrapper({
+    super.key,
+    required this.child,
+  });
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
-    logger.log('AppNavigationWrapper key: ${navigationShell.currentIndex}');
     return MultiBlocProvider(
       providers: [
         BlocProvider.value(
@@ -41,42 +42,45 @@ class AppNavigationWrapper extends StatelessWidget {
         ),
         //Another features bloc
       ],
-      child: MainAppScaffold(
-        navigationShell: navigationShell,
-      ),
+      child: child,
     );
   }
 }
 
 class MainAppScaffold extends StatelessWidget {
-  const MainAppScaffold({super.key, required this.navigationShell});
+  const MainAppScaffold({
+    super.key,
+    required this.navigationShell,
+  });
   final StatefulNavigationShell navigationShell;
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder<bool>(
-      valueListenable: AppState.showNavBar,
-      builder: (context, showBar, child) {
-        return Scaffold(
-          resizeToAvoidBottomInset: false,
-          body: navigationShell,
-          bottomNavigationBar: !showBar
-              ? null
-              : SizedBox(
-                  height: 54,
-                  child: BottomNavigationBar(
-                    currentIndex: navigationShell.currentIndex,
-                    items: _createNavigationBarItems(context),
-                    onTap: (int index) {
-                      navigationShell.goBranch(
-                        index,
-                        initialLocation: index == navigationShell.currentIndex,
-                      );
-                    },
+    return AppNavigationWrapper(
+      child: ValueListenableBuilder<bool>(
+        valueListenable: AppState.showNavBar,
+        builder: (context, showBar, child) {
+          return Scaffold(
+            resizeToAvoidBottomInset: false,
+            body: navigationShell,
+            bottomNavigationBar: !showBar
+                ? null
+                : SizedBox(
+                    height: 54,
+                    child: BottomNavigationBar(
+                      currentIndex: navigationShell.currentIndex,
+                      items: _createNavigationBarItems(context),
+                      onTap: (int index) {
+                        navigationShell.goBranch(
+                          index,
+                          initialLocation: index == navigationShell.currentIndex,
+                        );
+                      },
+                    ),
                   ),
-                ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 

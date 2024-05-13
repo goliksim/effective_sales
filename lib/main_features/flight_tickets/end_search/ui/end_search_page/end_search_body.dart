@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 import 'flight_card.dart';
 
 class FlightSearchBody extends StatelessWidget {
-  const FlightSearchBody({super.key, required this.tickets});
+  const FlightSearchBody({
+    super.key,
+    required this.tickets,
+  });
   final List<TicketOffersEntity> tickets;
 
   @override

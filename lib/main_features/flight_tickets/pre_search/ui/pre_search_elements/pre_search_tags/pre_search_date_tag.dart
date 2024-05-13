@@ -21,13 +21,13 @@ class FlightPreSearchDateTags extends StatelessWidget {
   final DateTime? reverseDate;
   final bool isReverse;
 
-  String formatDate(DateTime date, BuildContext context) {
+  String _formatDate(DateTime date, BuildContext context) {
     final locale = Localizations.localeOf(context).languageCode;
     final day = DateFormat('d MMM', locale).format(date);
     return day;
   }
 
-  String getWeekDay(DateTime date, BuildContext context) {
+  String _getWeekDay(DateTime date, BuildContext context) {
     final locale = Localizations.localeOf(context).languageCode;
     final weekDay = DateFormat('EE', locale).format(date);
     return weekDay;
@@ -71,12 +71,12 @@ class FlightPreSearchDateTags extends StatelessWidget {
             ),
           if (date != null)
             Text(
-              formatDate(date, context),
+              _formatDate(date, context),
               style: context.myStyles.title4,
             ),
           if (date != null)
             Text(
-              ', ${getWeekDay(date, context)}',
+              ', ${_getWeekDay(date, context)}',
               style: context.myStyles.title4.copyWith(
                 color: context.myColors.grey6,
               ),

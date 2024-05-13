@@ -31,7 +31,6 @@ class PreSearchRecommendationItem extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),
                     //TODO IMAGE MOCK (CHANGE TO IMAGE.NETWORK)
-
                     child: Image.asset(
                       fit: BoxFit.fitHeight,
                       width: 40,

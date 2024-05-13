@@ -14,25 +14,3 @@ class PriceDtoToEntityMapper {
     );
   }
 }
-
-/*
-@injectable
-class FlightOfferDtoToEntityMapper {
-  FlightOfferEntity map(FlightOfferDto dto) {
-    if (dto.id == null || dto.title == null || dto.town == null || dto.price == null) {
-      throw Exception('FlightOfferMappper: dto has null params');
-    }
-    return FlightOfferEntity(
-      id: dto.id ?? -1,
-      //TODO MOCK IMAGES
-      imageUrl: 'assets/images/mock/offers/${dto.id ?? -1}.png',
-      title: dto.title ?? 'Error title',
-      town: dto.town ?? 'Error town',
-      price: dto.price ?? const PriceEntity(value: 0),
-    );
-  }
-
-  List<FlightOfferEntity> mapList(List<FlightOfferDto> flightOfferDtos) {
-    return flightOfferDtos.map((e) => map(e)).toList();
-  }
-}*/
