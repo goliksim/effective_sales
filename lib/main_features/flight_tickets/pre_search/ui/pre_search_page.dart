@@ -32,6 +32,9 @@ class FlightPreSearchPage extends StatelessWidget {
                           physics: BouncingScrollPhysics(),
                           child: FlightPreSearchBody(),
                         ),
+                        ticketsLoaded: (_, __) {
+                          return const FlightPreSearchBodyShimmer();
+                        },
                         error: (_) => const Expanded(
                           child: Center(
                             child: FlightPreSearchError(),
