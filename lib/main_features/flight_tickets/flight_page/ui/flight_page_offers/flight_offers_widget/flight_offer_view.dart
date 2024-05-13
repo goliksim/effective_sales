@@ -54,7 +54,7 @@ class FlightOfferView extends StatelessWidget {
                 style: context.myStyles.text2,
               ),
             ],
-          )
+          ),
         ],
       ),
     );

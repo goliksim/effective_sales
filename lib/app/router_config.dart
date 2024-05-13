@@ -82,7 +82,7 @@ final routerConfig = GoRouter(
                   },
                 ),
               ],
-            )
+            ),
           ],
         ),
         StatefulShellBranch(
@@ -124,7 +124,7 @@ final routerConfig = GoRouter(
               },
             ),
           ],
-        )
+        ),
       ],
     ),
   ],

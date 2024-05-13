@@ -1,0 +1,51 @@
+name: EffectiveSales CI
+
+on:
+  push:
+    branches: [ "develop" ]
+  pull_request:
+    branches: [ "develop" ]
+
+jobs:
+  build:
+    name: Run analyzer and formatter / build app
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Setup flutter actions
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          flutter-version: '3.19.3'
+          
+      - name: Get dependencies
+        run: flutter pub get && flutter packages get && flutter packages pub get
+  
+      - name: Gen code
+        run: flutter gen-l10n && dart run build_runner build --delete-conflicting-outputs
+      
+      - name: Analyze code and formatting
+        run: flutter analyze && dart format . 
+        
+      - name: Stop workflow if previous step failed
+        if: failure()
+        run: exit 1
+
+      #- name: Build the apk
+      #  run:  flutter build apk -t lib/main.dart --release --dart-define=OFFERS_API_LINK=${{secrets.OFFERS_API_LINK}} --dart-define=TICKETS_OFFERS_API_LINK=${{secrets.TICKETS_OFFERS_API_LINK}} --dart-define=TICKETS_API_LINK=${{secrets.TICKETS_API_LINK}}
+      #
+      #- name: Upload artifact
+      #  uses: actions/upload-artifact@v1
+      #  with:
+      #    name: release-apk
+      #    path: ya_todolist/build/app/outputs/flutter-apk/app-prod-release.apk
+      #
+      #- name: "Deploy artifact to Firebase App Distribution"
+      #  uses: wzieba/Firebase-Distribution-Github-Action@v1
+      #  with:
+      #    appId: ${{secrets.FIREBASE_APP_ID_ANDROID}}
+      #    token: ${{secrets.FIREBASE_TOKEN}}
+      #    groups: CI_Group
+      #    file: ya_todolist/build/app/outputs/flutter-apk/app-prod-release.apk

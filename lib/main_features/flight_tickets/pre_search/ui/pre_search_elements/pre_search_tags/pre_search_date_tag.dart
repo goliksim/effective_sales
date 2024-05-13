@@ -80,7 +80,7 @@ class FlightPreSearchDateTags extends StatelessWidget {
               style: context.myStyles.title4.copyWith(
                 color: context.myColors.grey6,
               ),
-            )
+            ),
         ],
       ),
       onPressed: () {

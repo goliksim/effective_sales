@@ -61,7 +61,7 @@ class RouteSearchCityWidget extends StatelessWidget {
               padding: EdgeInsets.zero,
               onPressed: () => onActionIcon?.call(),
               icon: actionIcon!,
-            )
+            ),
         ],
       ),
     );

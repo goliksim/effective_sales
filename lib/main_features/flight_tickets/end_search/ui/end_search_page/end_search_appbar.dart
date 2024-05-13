@@ -72,7 +72,7 @@ class FlightSearchAppBar extends StatelessWidget {
                       ),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),

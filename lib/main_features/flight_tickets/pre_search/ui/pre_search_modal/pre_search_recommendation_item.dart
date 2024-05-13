@@ -55,12 +55,12 @@ class PreSearchRecommendationItem extends StatelessWidget {
                       ),
                     ],
                   ),
-                )
+                ),
               ],
             ),
             const Divider(
               height: 1,
-            )
+            ),
           ],
         ),
       ),

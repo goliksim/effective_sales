@@ -42,7 +42,7 @@ class FlightOffersShimmer extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),

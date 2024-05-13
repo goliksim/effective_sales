@@ -93,7 +93,7 @@ class _FlightPageAppBarState extends State<FlightPageAppBar> {
                     ),
                   ),
                 ),
-              )
+              ),
             ],
           );
         },

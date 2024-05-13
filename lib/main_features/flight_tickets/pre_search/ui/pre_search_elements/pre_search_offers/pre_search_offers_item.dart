@@ -83,7 +83,7 @@ class FlightTicketOfferItem extends StatelessWidget {
                               EffectiveSalesIcons.rightarrow,
                               color: context.myColors.blue,
                               size: 16,
-                            )
+                            ),
                           ],
                         ),
                         const SizedBox(
@@ -97,13 +97,13 @@ class FlightTicketOfferItem extends StatelessWidget {
                         ),
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
             const Divider(
               height: 1,
-            )
+            ),
           ],
         ),
       ),
