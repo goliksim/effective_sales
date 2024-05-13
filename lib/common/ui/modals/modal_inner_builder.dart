@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 Widget modalInnerBuilder({
   required Color backgroundColor,
-  required bool hasShadow,
   required bool hasTouchLine,
   required Widget child,
 }) {
@@ -32,23 +31,6 @@ Widget modalInnerBuilder({
           ],
         ),
       ),
-    );
-  }
-
-  if (hasShadow) {
-    widget = DecoratedBox(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            blurRadius: 3.0,
-            spreadRadius: 7.0,
-            offset: const Offset(0.0, 5.0),
-            color: Colors.black.withOpacity(0.1),
-          )
-        ],
-      ),
-      child: widget,
     );
   }
 

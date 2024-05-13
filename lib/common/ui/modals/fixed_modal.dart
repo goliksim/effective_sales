@@ -5,11 +5,8 @@ import 'modal_inner_builder.dart';
 
 class FixedModal extends StatelessWidget {
   final Widget child;
-
   final double size;
-
   final Color? background;
-
   final bool hasFrame;
   final bool hasShadow;
   final bool hasTouchLine;
@@ -30,7 +27,6 @@ class FixedModal extends StatelessWidget {
       height: size * MediaQuery.of(context).size.height,
       child: modalInnerBuilder(
         backgroundColor: background ?? context.myColors.grey2,
-        hasShadow: hasShadow,
         hasTouchLine: hasTouchLine,
         child: child,
       ),

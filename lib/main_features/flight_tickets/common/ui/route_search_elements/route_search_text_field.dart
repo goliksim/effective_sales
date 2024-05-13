@@ -45,7 +45,10 @@ class _RouteSearchTextFieldState extends State<RouteSearchTextField> {
       controller: _textController,
       style: context.myStyles.buttontext1,
       inputFormatters: [
-        if (widget.cyrrilicInput) FilteringTextInputFormatter.allow(RegExp(r'[а-яА-Я\s]')),
+        if (widget.cyrrilicInput)
+          FilteringTextInputFormatter.allow(
+            RegExp(r'[а-яА-Я\s]'),
+          ),
       ],
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(vertical: 8),

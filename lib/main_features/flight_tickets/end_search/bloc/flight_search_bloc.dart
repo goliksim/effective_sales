@@ -74,7 +74,7 @@ class FlightSearchBloc extends Bloc<FlightSearchEvent, FlightSearchState> {
   }
 
   Future<void> _loadRoute(_FlightSearchLoad event, Emitter<FlightSearchState> emit) async {
-    logger.log('FlightSearchBloc _loadRoute');
+    logger.log('FlightSearchBloc:  load RouteEntity to bloc');
     emit(
       FlightSearchState.init(
         requestEntity: state.requestEntity.copyWith(
@@ -82,15 +82,15 @@ class FlightSearchBloc extends Bloc<FlightSearchEvent, FlightSearchState> {
         ),
       ),
     );
-
+    logger.log('FlightSearchBloc:  call _preSearch from route loading');
     add(const FlightSearchEvent.preSearch());
   }
 
   Future<void> _preSearch(_FlightPreSearch event, Emitter<FlightSearchState> emit) async {
-    logger.log('FlightSearchBloc _preSearch');
     try {
+      logger.log('FlightSearchBloc: _preSearch start');
       if (state.requestEntity.route.arrival == null) {
-        logger.log('FlightSearchBloc _preSearch arrival is null');
+        logger.warning('FlightSearchBloc: _preSearch arrival is null');
         emit(
           FlightSearchState.init(
             requestEntity: state.requestEntity,
@@ -99,7 +99,7 @@ class FlightSearchBloc extends Bloc<FlightSearchEvent, FlightSearchState> {
         return;
       }
       final ticketOffers = await flightPreSearchRepository.getTicketsOffers(state.requestEntity);
-      logger.log('FlightSearchBloc _preSearch $ticketOffers');
+      logger.fine('FlightSearchBloc _preSearch offers -  $ticketOffers');
 
       emit(
         FlightSearchState.preSearch(
@@ -108,49 +108,81 @@ class FlightSearchBloc extends Bloc<FlightSearchEvent, FlightSearchState> {
         ),
       );
     } catch (e) {
-      logger.log('FlightSearchBloc _preSearch $e');
-      emit(FlightSearchState.error(requestEntity: state.requestEntity));
+      logger.warning('FlightSearchBloc:  _preSearch failed $e');
+      emit(
+        FlightSearchState.error(
+          requestEntity: state.requestEntity,
+        ),
+      );
     }
   }
 
   Future<void> _updateDate(_FlightSearchDateChanger event, Emitter<FlightSearchState> emit) async {
+    logger.log('FlightSearchBloc: _updateDate ${event.date}');
     final requestEntity = state.requestEntity.copyWith(date: event.date);
 
-    emit(FlightSearchState.init(requestEntity: requestEntity));
-    add(const FlightSearchEvent.preSearch());
+    emit(
+      FlightSearchState.init(
+        requestEntity: requestEntity,
+      ),
+    );
+    logger.fine('FlightSearchBloc: _updateDate call _preSearch');
+    add(
+      const FlightSearchEvent.preSearch(),
+    );
   }
 
   Future<void> _updateReverseDate(_FlightSearchWayChanger event, Emitter<FlightSearchState> emit) async {
+    logger.log('FlightSearchBloc: _updateReverseDate ${event.date}');
     final requestEntity = state.requestEntity.copyWith(
       reverseDate: event.date,
     );
 
-    emit(FlightSearchState.init(requestEntity: requestEntity));
-    add(const FlightSearchEvent.preSearch());
+    emit(
+      FlightSearchState.init(
+        requestEntity: requestEntity,
+      ),
+    );
+
+    logger.fine('FlightSearchBloc: _updateReverseDate call _preSearch');
+    add(
+      const FlightSearchEvent.preSearch(),
+    );
   }
 
   Future<void> _updateTicketTypes(_FlightSearchTypesChanger event, Emitter<FlightSearchState> emit) async {
+    logger.log('FlightSearchBloc: _updateTypes ${event.type} ${event.count}');
     final requestEntity = state.requestEntity.copyWith(
       ticketsCount: event.count,
       ticketsType: event.type,
     );
-    emit(FlightSearchState.init(requestEntity: requestEntity));
+    emit(
+      FlightSearchState.init(
+        requestEntity: requestEntity,
+      ),
+    );
+
+    logger.fine('FlightSearchBloc: _updateTypes call _preSearch');
     add(const FlightSearchEvent.preSearch());
   }
 
   Future<void> _toSearch(_FlightToSearch event, Emitter<FlightSearchState> emit) async {
-    event.context.push(RouteName.flightEndSearch).then((value) {
-      preSearch();
-    });
+    logger.log('FlightSearchBloc _ToSearch');
+    event.context.push(RouteName.flightEndSearch).then(
+      (value) {
+        logger.log('FlightSearchBloc _ToSearch complete, call _preSearch');
+        preSearch();
+      },
+    );
   }
 
   Future<void> _search(_FlightSearch event, Emitter<FlightSearchState> emit) async {
-    logger.log('FlightSearchBloc _Search');
+    logger.log('FlightSearchBloc: _Search');
     try {
       final tickets = await ticketOffersRepository.getTicketOffers(
         state.requestEntity,
       );
-      logger.log('FlightSearchBloc _Search $tickets');
+      logger.fine('FlightSearchBloc: _Search $tickets');
 
       emit(
         FlightSearchState.ticketsLoaded(
@@ -159,7 +191,7 @@ class FlightSearchBloc extends Bloc<FlightSearchEvent, FlightSearchState> {
         ),
       );
     } catch (e) {
-      logger.log('FlightSearchBloc _Search $e');
+      logger.log('FlightSearchBloc: _Search $e');
       emit(FlightSearchState.error(requestEntity: state.requestEntity));
     }
   }

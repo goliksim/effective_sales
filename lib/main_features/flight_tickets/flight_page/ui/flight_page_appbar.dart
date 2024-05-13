@@ -14,7 +14,7 @@ class FlightPageAppBar extends StatefulWidget {
   final double _expandedHeight = 238.0;
   final double _toolbarHeight = 100;
 
-  double calculateExpandRatio(BoxConstraints constraints) {
+  double _calculateExpandRatio(BoxConstraints constraints) {
     double expandRation = (constraints.maxHeight - _toolbarHeight) / (_expandedHeight - _toolbarHeight);
     if (expandRation > 1) expandRation = 1.0;
     if (expandRation < 0) expandRation = 0.0;
@@ -38,7 +38,7 @@ class _FlightPageAppBarState extends State<FlightPageAppBar> {
       backgroundColor: context.myColors.black,
       flexibleSpace: LayoutBuilder(
         builder: (context, constraints) {
-          final expandRation = widget.calculateExpandRatio(constraints);
+          final expandRation = widget._calculateExpandRatio(constraints);
           final animation = AlwaysStoppedAnimation(expandRation);
           return Stack(
             alignment: Alignment.center,
@@ -85,11 +85,8 @@ class _FlightPageAppBarState extends State<FlightPageAppBar> {
                         elevation: 3,
                         height: 90,
                         onTap: () {
-                          logger.log('RouteSearchAnimatedWidget onTap');
+                          logger.log('RouteSearchAnimatedWidget: show PreSearchModalWindow');
                           showPreSearchModalWindow(context);
-                          //getIt<FlightDepartureRepository>().writeLastDeparture(
-                          //  RouteSearchInherited.of(context).departureController.text,
-                          // );
                         },
                         animation: animation,
                       ),

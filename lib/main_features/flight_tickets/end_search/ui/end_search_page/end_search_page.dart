@@ -8,7 +8,9 @@ import 'package:flutter/material.dart';
 import 'end_search_body.dart';
 
 class FlightEndSearchPage extends StatefulWidget {
-  const FlightEndSearchPage({super.key});
+  const FlightEndSearchPage({
+    super.key,
+  });
 
   @override
   State<FlightEndSearchPage> createState() => _FlightEndSearchPageState();

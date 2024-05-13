@@ -1,44 +1,23 @@
-import 'package:effective_sales/app/injectable_init.dart';
 import 'package:effective_sales/app/localization/localization_extension.dart';
-import 'package:effective_sales/app/logger.dart';
 import 'package:effective_sales/app/router_config.dart';
 import 'package:effective_sales/app/theme/app_theme_colors.dart';
 import 'package:effective_sales/app/theme/app_theme_data.dart';
 import 'package:effective_sales/app/theme/effective_sales_icons.dart';
 import 'package:effective_sales/main_features/flight_tickets/common/bloc/route_search_bloc.dart';
-import 'package:effective_sales/main_features/flight_tickets/common/domain/repositories/route_part_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class PreSearchHints extends StatelessWidget {
-  const PreSearchHints({super.key});
+  const PreSearchHints({
+    super.key,
+  });
 
   void _hardWayAction(BuildContext context) {
     context.push(RouteName.flightSearchHard);
   }
 
   void _randomWayAction(BuildContext context) {
-    final departure = context.routeSearchState?.flightRoute.departure;
-
-    final newArrival = (departure == null)
-        ? getIt<RoutePartRepository>().getRandomArrival()
-        : getIt<RoutePartRepository>().getRandomAvailableArrival(departure);
-
-    newArrival.then(
-      (value) {
-        if (value != null) {
-          if (value != context.routeSearchState?.flightRoute.arrival) {
-            context.routeSearchBloc?.confirmArrivalByString(value.localTown, context);
-          } else {
-            _randomWayAction(context);
-            return;
-          }
-        }
-      },
-      onError: (e) {
-        logger.warning('Failed to get random arrival $e');
-      },
-    );
+    context.routeSearchBloc?.pickRandomArrival(context);
   }
 
   void _weekendAction(BuildContext context) {

@@ -45,8 +45,6 @@ abstract class NetworkModule {
         maxWidth: 90,
       ),
     );
-  //@singleton
-  //RestClient get getService => RestClient(dio);
 }
 
 @module
@@ -102,7 +100,6 @@ abstract class SearchModule {
 
 @module
 abstract class PrefModule {
-  // We presolve future so we should have Isar, not Future<Isar> in our dependency graph
   @preResolve
   @singleton
   Future<SharedPreferences> get prefs async => await SharedPreferences.getInstance();

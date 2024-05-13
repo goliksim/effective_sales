@@ -19,12 +19,6 @@ class FlightPreSearchTypesTag extends StatelessWidget {
   final int? ticketsCount;
   final Function(int, FlightTicketType) onChanged;
 
-  Map<FlightTicketType, String> typeNames(BuildContext context) => {
-        FlightTicketType.economy: context.S.flight_type_economy,
-        FlightTicketType.business: context.S.flight_type_business,
-        FlightTicketType.first: context.S.flight_type_first
-      };
-
   String _printTypes(BuildContext context) {
     late final String typeString;
 

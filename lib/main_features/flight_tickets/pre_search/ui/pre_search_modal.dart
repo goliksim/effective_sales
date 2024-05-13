@@ -64,7 +64,7 @@ class PreSearchModalWindow extends StatelessWidget {
             const PreSearchRecommendation(),
           ],
         ),
-      ), //MediaQuery.of(context).size.height * 0.9,
+      ),
     );
   }
 }

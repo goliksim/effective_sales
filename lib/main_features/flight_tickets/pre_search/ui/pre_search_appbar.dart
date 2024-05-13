@@ -8,7 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class FlightPreSearchAppBar extends StatelessWidget {
-  const FlightPreSearchAppBar({super.key});
+  const FlightPreSearchAppBar({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

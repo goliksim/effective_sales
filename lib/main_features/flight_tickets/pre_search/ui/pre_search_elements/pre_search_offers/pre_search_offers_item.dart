@@ -6,7 +6,10 @@ import 'package:effective_sales/main_features/flight_tickets/pre_search/domain/m
 import 'package:flutter/material.dart';
 
 class FlightTicketOfferItem extends StatelessWidget {
-  const FlightTicketOfferItem({super.key, required this.flightTicketOffer});
+  const FlightTicketOfferItem({
+    super.key,
+    required this.flightTicketOffer,
+  });
   final FlightTicketOffersEntity flightTicketOffer;
 
   //MOCK COLOR GENERATOR

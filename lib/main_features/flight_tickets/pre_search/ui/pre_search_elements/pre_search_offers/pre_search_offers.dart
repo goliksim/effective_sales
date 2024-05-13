@@ -6,7 +6,10 @@ import 'package:effective_sales/main_features/flight_tickets/pre_search/ui/pre_s
 import 'package:flutter/material.dart';
 
 class FlightPreSearchOffers extends StatefulWidget {
-  const FlightPreSearchOffers({super.key, required this.offers});
+  const FlightPreSearchOffers({
+    super.key,
+    required this.offers,
+  });
   final List<FlightTicketOffersEntity> offers;
   final int minOffetsCount = 2;
   @override

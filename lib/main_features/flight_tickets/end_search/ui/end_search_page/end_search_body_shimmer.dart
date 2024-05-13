@@ -2,7 +2,9 @@ import 'package:effective_sales/common/ui/shimmer_box.dart';
 import 'package:flutter/material.dart';
 
 class FlightSearchBodyShimmer extends StatelessWidget {
-  const FlightSearchBodyShimmer({super.key});
+  const FlightSearchBodyShimmer({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

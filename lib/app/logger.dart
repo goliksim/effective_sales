@@ -5,8 +5,8 @@ Logs logger = Logs();
 
 class Logs {
   Future<String> formatLog(String text) async {
-    DateTime date = DateTime.now();
-    String finalDateString = '${DateFormat.yMd().format(date)} ${DateFormat.jms().format(date)}\t';
+    final DateTime date = DateTime.now();
+    final String finalDateString = '${DateFormat.yMd().format(date)} ${DateFormat.jms().format(date)}\t';
 
     return finalDateString + text;
   }

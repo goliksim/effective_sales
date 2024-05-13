@@ -10,7 +10,6 @@ class FlightRoutePartModel with _$FlightRoutePartModel {
     required int? townId,
     required String? localContry,
     required String? localTown,
-    //timezone ...
   }) = _FlightRoutePartModel;
 
   factory FlightRoutePartModel.fromJson(Map<String, Object?> json) => _$FlightRoutePartModelFromJson(json);

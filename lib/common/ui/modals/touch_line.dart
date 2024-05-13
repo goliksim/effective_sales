@@ -2,8 +2,10 @@ import 'package:effective_sales/app/theme/app_theme_colors.dart';
 import 'package:flutter/material.dart';
 
 class TouchLine extends StatelessWidget {
-  const TouchLine({super.key, this.width});
-
+  const TouchLine({
+    super.key,
+    this.width,
+  });
   final double? width;
 
   @override

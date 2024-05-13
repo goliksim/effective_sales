@@ -5,18 +5,20 @@ import 'package:effective_sales/app/theme/effective_sales_icons.dart';
 import 'package:flutter/material.dart';
 
 class FlightPreSearchSubcription extends StatefulWidget {
-  const FlightPreSearchSubcription({super.key});
+  const FlightPreSearchSubcription({
+    super.key,
+  });
 
   @override
   State<FlightPreSearchSubcription> createState() => _FlightPreSearchSubcriptionState();
 }
 
 class _FlightPreSearchSubcriptionState extends State<FlightPreSearchSubcription> {
-  bool checkboxValue = false;
+  bool _checkboxValue = false;
 
   void _changeCheckboxValue(bool value) {
     setState(() {
-      checkboxValue = value;
+      _checkboxValue = value;
     });
   }
 
@@ -49,7 +51,7 @@ class _FlightPreSearchSubcriptionState extends State<FlightPreSearchSubcription>
                 inactiveTrackColor: context.myColors.grey5,
                 activeColor: context.myColors.blue,
                 activeTrackColor: context.myColors.darkBlue,
-                value: checkboxValue,
+                value: _checkboxValue,
                 onChanged: (value) {
                   Feedback.forTap(context);
                   _changeCheckboxValue(

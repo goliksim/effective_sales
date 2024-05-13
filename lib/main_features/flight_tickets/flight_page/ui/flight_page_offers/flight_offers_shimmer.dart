@@ -2,11 +2,12 @@ import 'package:effective_sales/common/ui/shimmer_box.dart';
 import 'package:flutter/material.dart';
 
 class FlightOffersShimmer extends StatelessWidget {
-  const FlightOffersShimmer({super.key});
+  const FlightOffersShimmer({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    //context.flightPageBloc?.load();
     return SliverToBoxAdapter(
       child: Padding(
         padding: const EdgeInsets.fromLTRB(12, 36, 12, 0),

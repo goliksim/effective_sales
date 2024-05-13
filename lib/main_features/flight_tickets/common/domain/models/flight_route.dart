@@ -10,7 +10,6 @@ class FlightRoute with _$FlightRoute {
   const factory FlightRoute({
     required FlightRoutePartEntity? departure,
     required FlightRoutePartEntity? arrival,
-    //timezone ...
   }) = _FlightRoute;
 
   factory FlightRoute.fromJson(Map<String, Object?> json) => _$FlightRouteFromJson(json);

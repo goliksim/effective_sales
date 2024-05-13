@@ -7,14 +7,17 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class FlightCard extends StatelessWidget {
-  const FlightCard({super.key, required this.ticket});
+  const FlightCard({
+    super.key,
+    required this.ticket,
+  });
   final TicketOffersEntity ticket;
 
-  String formatTime(DateTime date) {
+  String _formatTime(DateTime date) {
     return DateFormat.Hm().format(date);
   }
 
-  String calculateDuration(DateTime arrival, DateTime departure) {
+  String _calculateDuration(DateTime arrival, DateTime departure) {
     double differenceInHours = arrival.difference(departure).inMinutes / 60;
     double roundedDifference = (differenceInHours * 2).round() / 2;
     return roundedDifference.toStringAsFixed(1).replaceAll('.0', '');
@@ -73,7 +76,7 @@ class FlightCard extends StatelessWidget {
                                   width: 8,
                                 ),
                                 FlightPartWidget(
-                                  time: formatTime(ticket.departure.date),
+                                  time: _formatTime(ticket.departure.date),
                                   airport: ticket.departure.airport,
                                 ),
                                 SizedBox(
@@ -87,14 +90,14 @@ class FlightCard extends StatelessWidget {
                                   ),
                                 ),
                                 FlightPartWidget(
-                                  time: formatTime(ticket.arrival.date),
+                                  time: _formatTime(ticket.arrival.date),
                                   airport: ticket.arrival.airport,
                                 ),
                                 const SizedBox(
                                   width: 13,
                                 ),
                                 Text(
-                                  '${calculateDuration(ticket.arrival.date, ticket.departure.date)}${context.S.f_search_hour} ${context.S.f_search_in_flight}${ticket.hasTransfer ? '' : ' / ${context.S.f_search_no_transfers}'}',
+                                  '${_calculateDuration(ticket.arrival.date, ticket.departure.date)}${context.S.f_search_hour} ${context.S.f_search_in_flight}${ticket.hasTransfer ? '' : ' / ${context.S.f_search_no_transfers}'}',
                                   style: context.myStyles.text2,
                                   overflow: TextOverflow.ellipsis,
                                 ),

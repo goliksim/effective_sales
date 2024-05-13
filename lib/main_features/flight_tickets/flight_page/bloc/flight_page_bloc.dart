@@ -35,15 +35,17 @@ class FlightPageBloc extends Bloc<FlightPageEvent, FlightPageState> {
 
   Future<void> _load(_LoadFlightPage event, Emitter<FlightPageState> emit) async {
     try {
-      logger.log('flighPageBloc load');
+      logger.log('FlightPageBloc: load');
       final flightOffers = await flightOffersRep.getOfferEntities();
       final arrivalRecommendations = await arrivalRecommendationRep.getAllRecommendation();
-      logger.log('flightOffers $flightOffers');
+      logger.fine('FlightPageBloc: flighOffers $flightOffers, \n\narrivalRecommendations $arrivalRecommendations');
       if (flightOffers.isEmpty) {
+        logger.log('FlightPageBloc: call empty state');
         emit(
           const FlightPageState.empty(),
         );
       } else {
+        logger.log('FlightPageBloc: call loaded state');
         emit(
           FlightPageState.loaded(
             flightOffers,
@@ -52,7 +54,7 @@ class FlightPageBloc extends Bloc<FlightPageEvent, FlightPageState> {
         );
       }
     } catch (e) {
-      logger.warning('flighPageBloc error $e');
+      logger.warning('FlightPageBloc: load failed $e');
       emit(
         const FlightPageState.error(),
       );

@@ -3,7 +3,9 @@ import 'package:effective_sales/main_features/flight_tickets/flight_page/bloc/fl
 import 'package:flutter/material.dart';
 
 class FlightOffersError extends StatelessWidget {
-  const FlightOffersError({super.key});
+  const FlightOffersError({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

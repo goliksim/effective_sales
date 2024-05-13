@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 class RouteSearchLeftIcon extends StatelessWidget {
-  const RouteSearchLeftIcon({super.key, this.leftIconAction, required this.leftIcon});
-
+  const RouteSearchLeftIcon({
+    super.key,
+    this.leftIconAction,
+    required this.leftIcon,
+  });
   final Function()? leftIconAction;
   final Icon leftIcon;
 

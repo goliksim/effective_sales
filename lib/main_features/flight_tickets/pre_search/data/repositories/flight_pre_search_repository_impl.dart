@@ -16,7 +16,6 @@ class FlightPreSearchRepositoryImpl implements FlightPreSearchRepository {
   @override
   Future<List<FlightTicketOffersEntity>> getTicketsOffers(FlightOffersRequestEntity requestEntity) async {
     final responce = await client.fetchTicketOffers(const String.fromEnvironment('TICKETS_OFFERS_API_LINK'));
-    logger.log('preSearchRepository fetchTicketOffers $responce');
     return flightOfferDtoToEntityMapper.mapList(responce.offers);
   }
 }

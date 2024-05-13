@@ -1,4 +1,3 @@
-import 'package:effective_sales/app/logger.dart';
 import 'package:effective_sales/common/data/api_service.dart';
 import 'package:effective_sales/main_features/flight_tickets/end_search/data/mappers/ticket_offers_dto_to_entity_mapper.dart';
 import 'package:effective_sales/main_features/flight_tickets/end_search/domain/models/ticket_offers_entity.dart';
@@ -16,7 +15,6 @@ class TicketOffersRepositoryImpl implements TicketOffersRepository {
   @override
   Future<List<TicketOffersEntity>> getTicketOffers(FlightOffersRequestEntity requestEntity) async {
     final responce = await _restClient.fetchTickets(const String.fromEnvironment('TICKETS_API_LINK'));
-    logger.log('ticketOffersRepositoriesImpl fetchTickets $responce');
     return _ticketOffersDtoToEntityMapper.mapList(responce.tickets);
   }
 }
