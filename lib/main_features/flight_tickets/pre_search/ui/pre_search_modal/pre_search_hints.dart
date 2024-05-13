@@ -27,16 +27,13 @@ class PreSearchHints extends StatelessWidget {
     newArrival.then(
       (value) {
         if (value != null) {
-          print(value);
-          print(context.routeSearchState?.flightRoute.arrival);
           if (value != context.routeSearchState?.flightRoute.arrival) {
-            context.routeSearchBloc?.confirmArrivalByString(value.localTown);
+            context.routeSearchBloc?.confirmArrivalByString(value.localTown, context);
           } else {
             _randomWayAction(context);
             return;
           }
         }
-        //TODO CONTEXT???
       },
       onError: (e) {
         logger.warning('Failed to get random arrival $e');

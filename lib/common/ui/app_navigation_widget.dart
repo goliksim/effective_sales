@@ -3,6 +3,7 @@ import 'package:effective_sales/app/logger.dart';
 import 'package:effective_sales/app/router_config.dart';
 import 'package:effective_sales/app/theme/effective_sales_icons.dart';
 import 'package:effective_sales/main_features/flight_tickets/common/bloc/route_search_bloc.dart';
+import 'package:effective_sales/main_features/flight_tickets/end_search/bloc/flight_search_bloc.dart';
 import 'package:effective_sales/main_features/flight_tickets/flight_page/bloc/flight_page_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,14 +27,17 @@ class AppNavigationWrapper extends StatelessWidget {
   final Widget child;
   @override
   Widget build(BuildContext context) {
-    logger.log('AppNavigationWrapper key: ${key}');
+    logger.log('AppNavigationWrapper key: $key');
     return MultiBlocProvider(
       providers: [
         BlocProvider.value(
           value: getIt<FlightPageBloc>(),
         ),
         BlocProvider.value(
-          value: getIt<RouteSearchBloc>()..load(),
+          value: getIt<RouteSearchBloc>(),
+        ),
+        BlocProvider.value(
+          value: getIt<FlightSearchBloc>(),
         ),
         //Another features bloc
       ],
@@ -58,7 +62,7 @@ class _MainAppScaffoldState extends State<MainAppScaffold> {
 
   void _onItemTapped(int index) {
     _selectedIndex = index;
-    context.go(AppState.mapScreen[index] ?? '/home');
+    context.pushReplacement(AppState.mapScreen[index] ?? '/home');
   }
 
   @override

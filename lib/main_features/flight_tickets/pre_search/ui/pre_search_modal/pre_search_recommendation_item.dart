@@ -18,8 +18,7 @@ class PreSearchRecommendationItem extends StatelessWidget {
         padding: EdgeInsets.zero,
       ),
       onPressed: () {
-        context.routeSearchBloc?.confirmArrivalByString(recommendation.placeTitle);
-        //TODO CONTEXT ???
+        context.routeSearchBloc?.confirmArrivalByString(recommendation.placeTitle, context);
       },
       child: SizedBox(
         height: 56,
