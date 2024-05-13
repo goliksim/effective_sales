@@ -16,7 +16,7 @@ class RouteSearchLeftIcon extends StatelessWidget {
         child: IconButton(
           splashRadius: 18,
           padding: EdgeInsets.zero,
-          onPressed: () => leftIconAction ?? {},
+          onPressed: () => leftIconAction?.call(),
           icon: leftIcon,
         ),
       ),

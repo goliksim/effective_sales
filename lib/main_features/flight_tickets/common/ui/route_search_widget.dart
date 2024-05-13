@@ -35,9 +35,8 @@ class RouteSearchWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('build RouteSearchWidget');
     return SizedBox(
-      height: 90,
+      height: height,
       width: double.infinity,
       child: Card(
         margin: EdgeInsets.zero,
@@ -63,7 +62,9 @@ class RouteSearchWidget extends StatelessWidget {
                       isDeparture: true,
                       leftIcon: departureIcon,
                       actionIcon: showSwapButton ? const Icon(EffectiveSalesIcons.swap) : null,
-                      onActionIcon: () {},
+                      onActionIcon: () {
+                        context.routeSearchBloc?.swap();
+                      },
                       hintText: context.S.f_page_search_departure_hint,
                       onEditingComplete: departureAction,
                     ),

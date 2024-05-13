@@ -45,7 +45,7 @@ class _RouteSearchTextFieldState extends State<RouteSearchTextField> {
       controller: _textController,
       style: context.myStyles.buttontext1,
       inputFormatters: [
-        if (widget.cyrrilicInput) FilteringTextInputFormatter.allow(RegExp(r'[а-яА-Я]')),
+        if (widget.cyrrilicInput) FilteringTextInputFormatter.allow(RegExp(r'[а-яА-Я\s]')),
       ],
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(vertical: 8),
@@ -61,7 +61,9 @@ class _RouteSearchTextFieldState extends State<RouteSearchTextField> {
       ),
       onEditingComplete: () {
         FocusScope.of(context).unfocus();
-        widget.onEditingComplete?.call(_textController.text);
+        widget.onEditingComplete?.call(
+          _textController.text.trim(),
+        );
       },
     );
   }

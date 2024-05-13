@@ -1,4 +1,5 @@
 import 'package:effective_sales/main_features/flight_tickets/flight_page/data/models/flight_offer_responce.dart';
+import 'package:effective_sales/main_features/flight_tickets/pre_search/data/models/flight_ticket_offers_responce.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
@@ -23,4 +24,7 @@ abstract class RestClient {
       bool.hasEnvironment('TICKETS_API_LINK') ? String.fromEnvironment('TICKETS_API_LINK') : 'not_found';*/
   @GET('/{url}')
   Future<FlightOfferResponce> fetchFlightOffers(@Path() String url);
+
+  @GET('/{url}')
+  Future<FlightTicketOffersResponce> fetchTicketOffers(@Path() String url);
 }

@@ -6,6 +6,7 @@
     "nav_title_profile": "Профиль",
     "f_page_title": "Поиск дешевых авиабилетов",
     "f_page_offers_title": "Музыкально отлететь",
+    "f_page_offers_show_all": "Показать все места",
     "f_page_search_departure_hint": "Откуда - Москва",
     "f_page_search_arrival_hint": "Куда - Турция",
     "price_from": "от",
@@ -15,5 +16,16 @@
     "f_pre_search_hints_hard_way":"Сложный маршрут",
     "f_pre_search_hints_random":"Куда угодно",
     "f_pre_search_hints_weekend":"Выходные",
-    "f_pre_search_hints_hot_tickets":"Горячие билеты"
+    "f_pre_search_hints_hot_tickets":"Горячие билеты",
+    "f_pre_search_tags_reverse":"обратно",
+    "flight_type_economy":"эконом",
+    "flight_type_business":"бизнес",
+    "flight_type_first":"первый",
+    "f_pre_search_tags_filter":"фильтры",
+    "f_pre_search_direct_flight":"Прямые рейсы",
+    "f_pre_search_show_all":"Посмотреть все билеты",
+    "f_pre_search_price_subscription":"Подписка на цену",
+    "f_pre_search_offers_show_all":"Показать все",
+    "f_pre_search_offers_hide":"Свернуть"
+    
 }

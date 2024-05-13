@@ -15,7 +15,6 @@ class RouteSearchWrapper extends StatelessWidget {
       buildWhen: (previous, current) {
         final condition = (previous.flightRoute.arrival != current.flightRoute.arrival ||
             previous.flightRoute.departure != current.flightRoute.departure);
-        print(condition);
         return condition;
       },
       builder: (context, state) => builder(context, state),

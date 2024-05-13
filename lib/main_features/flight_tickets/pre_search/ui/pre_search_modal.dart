@@ -29,7 +29,6 @@ class PreSearchModalWindow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('PreSearchModalWindow' + (context.routeSearchState?.flightRoute ?? 'null').toString());
     return FixedModal(
       hasTouchLine: true,
       size: 0.85,
@@ -39,7 +38,6 @@ class PreSearchModalWindow extends StatelessWidget {
           children: [
             RouteSearchWrapper(
               builder: (context, state) {
-                print('builder');
                 return RouteSearchWidget(
                   key: UniqueKey(),
                   elevation: 0,
@@ -51,8 +49,7 @@ class PreSearchModalWindow extends StatelessWidget {
                     context.routeSearchBloc?.confirmDepartureByString(value);
                   },
                   arrivalAction: (value) {
-                    context.routeSearchBloc?.confirmArrivalByString(value);
-                    //TODO CONTEXT ???
+                    context.routeSearchBloc?.confirmArrivalByString(value, context);
                   },
                 );
               },

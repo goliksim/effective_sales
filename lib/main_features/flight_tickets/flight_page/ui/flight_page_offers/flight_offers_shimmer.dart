@@ -1,4 +1,4 @@
-import 'package:effective_sales/app/theme/app_theme_colors.dart';
+import 'package:effective_sales/common/ui/shimmer_box.dart';
 import 'package:flutter/material.dart';
 
 class FlightOffersShimmer extends StatelessWidget {
@@ -45,35 +45,6 @@ class FlightOffersShimmer extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class ShimerBox extends StatelessWidget {
-  const ShimerBox(
-    this.height,
-    this.width,
-    this.margin, {
-    this.color,
-    super.key,
-  });
-  final EdgeInsets? margin;
-  final double? height;
-  final double? width;
-  final Color? color;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: height,
-      width: width,
-      child: Card(
-        margin: margin,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16.0),
-        ),
-        color: color ?? context.myColors.grey2,
       ),
     );
   }
