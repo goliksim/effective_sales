@@ -71,10 +71,12 @@ class MainAppScaffold extends StatelessWidget {
                       currentIndex: navigationShell.currentIndex,
                       items: _createNavigationBarItems(context),
                       onTap: (int index) {
-                        navigationShell.goBranch(
-                          index,
-                          initialLocation: index == navigationShell.currentIndex,
-                        );
+                        if (navigationShell.currentIndex != index) {
+                          navigationShell.goBranch(
+                            index,
+                            initialLocation: index == navigationShell.currentIndex,
+                          );
+                        }
                       },
                     ),
                   ),

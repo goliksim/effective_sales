@@ -46,7 +46,7 @@ class PreSearchModalWindow extends StatelessWidget {
                   arrivalIcon: const Icon(EffectiveSalesIcons.search),
                   showClearArrivalButton: true,
                   departureAction: (value) {
-                    context.routeSearchBloc?.confirmDepartureByString(value);
+                    context.routeSearchBloc?.confirmDepartureByString(value, context);
                   },
                   arrivalAction: (value) {
                     context.routeSearchBloc?.confirmArrivalByString(value, context);

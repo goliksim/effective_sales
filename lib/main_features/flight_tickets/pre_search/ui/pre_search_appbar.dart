@@ -25,7 +25,7 @@ class FlightPreSearchAppBar extends StatelessWidget {
           showSwapButton: true,
           showClearArrivalButton: true,
           departureAction: (value) {
-            context.routeSearchBloc?.confirmDepartureByString(value);
+            context.routeSearchBloc?.confirmDepartureByString(value, null);
           },
           arrivalAction: (value) {
             context.routeSearchBloc?.confirmArrivalByString(value, null);
