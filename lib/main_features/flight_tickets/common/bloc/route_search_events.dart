@@ -6,7 +6,8 @@ abstract class RouteSearchEvent with _$RouteSearchEvent {
   const factory RouteSearchEvent.confirmArrivalByString(String newArrival, BuildContext? context) =
       _ArrivalStringConfirm;
 
-  const factory RouteSearchEvent.confirmDepartureByString(String newDeparture) = _DepartureStringConfirm;
+  const factory RouteSearchEvent.confirmDepartureByString(String newDeparture, BuildContext? context) =
+      _DepartureStringConfirm;
 
   const factory RouteSearchEvent.pickRandomArrival(BuildContext? context) = _PickRandomArrival;
 

@@ -55,8 +55,8 @@ class RouteSearchBloc extends Bloc<RouteSearchEvent, RouteSearchState> {
     add(RouteSearchEvent.confirmArrivalByString(newArrival, context));
   }
 
-  void confirmDepartureByString(String newDeparture) {
-    add(RouteSearchEvent.confirmDepartureByString(newDeparture));
+  void confirmDepartureByString(String newDeparture, BuildContext? context) {
+    add(RouteSearchEvent.confirmDepartureByString(newDeparture, context));
   }
 
   void swap() {
@@ -99,7 +99,7 @@ class RouteSearchBloc extends Bloc<RouteSearchEvent, RouteSearchState> {
       ),
     );
     //GO TO PRE SEARCH PAGE
-    if (event.context != null && event.newArrival != '') {
+    if (event.context != null && event.newArrival != '' && state.flightRoute.departure != null) {
       logger.log('RouteSearchBloc: confirm arrival');
       await Future.delayed(const Duration(milliseconds: 500)).then(
         (value) {
@@ -141,6 +141,22 @@ class RouteSearchBloc extends Bloc<RouteSearchEvent, RouteSearchState> {
       } else {
         logger.warning('RouteSearchBloc: saving departure failed');
       }
+    }
+
+    //GO TO PRE SEARCH PAGE
+    if (event.context != null && event.newDeparture != '' && state.flightRoute.arrival != null) {
+      logger.log('RouteSearchBloc: confirm arrival');
+      await Future.delayed(const Duration(milliseconds: 500)).then(
+        (value) {
+          //HIDE BOTTOM SHEET
+          Navigator.of(event.context!).pop();
+          event.context?.push(RouteName.flightPreSearch).then(
+            (value) {
+              load(); //RELOAD
+            },
+          ); // TO PAGE
+        },
+      );
     }
   }
 
